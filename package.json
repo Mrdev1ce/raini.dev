@@ -51,7 +51,8 @@
     "build": "parcel build --public-url ./dist/ src/index.html",
     "test": "jest",
     "format": "prettier **/*.{js,html,ts,tsx,json,md} --write",
-    "lint:eslint": "eslint \"**/*.{js,jsx}\" --quiet",
+    "lint:prettier": "prettier src/**/*.{js,html,ts,tsx,json} **/*.{md,json,*rc} --list-different",
+    "lint:eslint": "eslint \"src/**/*.{ts,tsx}\" --quiet",
     "lint:tsc": "tsc --noEmit"
   },
   "keywords": [],
@@ -59,7 +60,8 @@
   "license": "MIT",
   "husky": {
     "hooks": {
-      "commit-msg": "npm run lint && commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run lint:tsc && npm run lint:prettier && npm run lint:eslint"
     }
   }
 }
