@@ -18,10 +18,12 @@
   },
   "rules": {
     "no-console": "warn",
+    "no-extra-boolean-cast": "off",
     "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/interface-name-prefix": ["error", "always"]
+    "@typescript-eslint/interface-name-prefix": ["error", "always"],
+    "@typescript-eslint/no-var-requires": "off"
   },
   "env": {
     "es6": true,
@@ -29,8 +31,8 @@
     "node": true
   },
   "settings": {
-    "react":{
+    "react": {
       "version": "detect"
     }
-  },
+  }
 }
