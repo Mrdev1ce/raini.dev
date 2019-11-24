@@ -50,8 +50,8 @@
     "start:ssr": "npm run build && babel-node server/index.js",
     "build": "parcel build --public-url ./dist/ src/index.html",
     "test": "jest",
-    "format": "prettier **/*.{js,html,ts,tsx,json,md} --write",
-    "lint:prettier": "prettier src/**/*.{js,html,ts,tsx,json} **/*.{md,json,*rc} --list-different",
+    "format": "prettier src/**/*.{ts,tsx} *.md --write",
+    "lint:prettier": "prettier src/**/*.{js,html,ts,tsx,json} *.md --list-different",
     "lint:eslint": "eslint \"src/**/*.{ts,tsx}\" --quiet",
     "lint:tsc": "tsc --noEmit"
   },
