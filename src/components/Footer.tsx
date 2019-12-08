@@ -4,9 +4,10 @@ import React, { ReactElement, useContext } from "react";
 
 const StyledFooter = styled.footer<IThemeAware>(({ theme }) => ({
   width: "100%",
+  maxWidth: "100vw",
   zIndex: 2,
   position: "absolute",
-  padding: "20px",
+  padding: "20px 0",
   textAlign: "center",
   backgroundColor: theme.DARK,
   color: theme.TEXT_MAIN,
