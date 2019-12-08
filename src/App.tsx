@@ -1,40 +1,33 @@
-import React, { ReactElement, StrictMode, useState } from "react";
+import React, { lazy, ReactElement, StrictMode, Suspense, useState } from "react";
 import { getTheme, ThemeContext } from "./context/ThemeContext";
+import { Global } from "@emotion/core";
+import { Router } from "@reach/router";
 import "normalize.css/normalize.css";
-import LandingPage from "./landing-page";
-import { css, Global } from "@emotion/core";
+import "highlight.js/styles/darcula.css";
+import { getGlobalStyles } from "./core/getGlobalStyles";
+import FullPageLoader from "./components/FullPageLoader";
 
-// TODO: Image by <a href="https://pixabay.com/users/MabelAmber-1377835/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3881675">Mabel Amber, still incognito...</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3881675">Pixabay</a>
-
-const globalStyles = css`
-  body {
-    overflow-x: hidden;
-    font-family: "Avenir Next", Avenir, "Helvetica Neue", "Lato", "Segoe UI", Helvetica, Arial,
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Caveat Brush", sans-serif;
-  }
-`;
+const LandingPage = lazy(() => import("./pages/LandingPage"));
+const DocsPage = lazy(() => import("./pages/DocsPage"));
+const Footer = lazy(() => import("./components/Footer"));
 
 export const App = (): ReactElement => {
   const themeHook = useState(getTheme("dark"));
+  const [theme] = themeHook;
   const { Provider: ThemeProvider } = ThemeContext;
 
   return (
     <StrictMode>
-      <Global styles={globalStyles} />
-      <ThemeProvider value={themeHook}>
-        <LandingPage />
-      </ThemeProvider>
+      <Suspense fallback={<FullPageLoader />}>
+        <ThemeProvider value={themeHook}>
+          <Global styles={getGlobalStyles(theme)} />
+          <Router>
+            <LandingPage path="/" />
+            <DocsPage path="/docs/:repository" />
+          </Router>
+          <Footer />
+        </ThemeProvider>
+      </Suspense>
     </StrictMode>
   );
 };

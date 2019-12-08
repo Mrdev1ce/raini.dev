@@ -9,8 +9,8 @@ enum DarkThemeColor {
   SUCCESS = "#399d44",
   ERROR = "#df2935",
   WARNING = "#f46036",
-  TEXT_DARK = "#3b3f56",
-  TEXT_LIGHT = "#ffdabf",
+  TEXT_MAIN = "#ffdabf",
+  TEXT_INVERSE = "#3b3f56",
 }
 
 enum LightThemeColor {
@@ -22,11 +22,15 @@ enum LightThemeColor {
   SUCCESS = "#399d44",
   ERROR = "#df2935",
   WARNING = "#f46036",
-  TEXT_DARK = "#3b3f56",
-  TEXT_LIGHT = "#ffdabf",
+  TEXT_MAIN = "#3b3f56",
+  TEXT_INVERSE = "#ffdabf",
 }
 
 export type Theme = typeof DarkThemeColor | typeof LightThemeColor;
+
+export interface IThemeAware {
+  theme: Theme;
+}
 
 export const getTheme = (type: "light" | "dark"): Theme =>
   type == "dark" ? DarkThemeColor : LightThemeColor;

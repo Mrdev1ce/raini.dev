@@ -1,4 +1,4 @@
-import { TFragmentScript, TVertexScript } from "./rain-renderer";
+import { TFragmentScript, TVertexScript } from "./RainRenderer";
 import { createShader } from "./RainUtils";
 
 export type GLUniformType = "1f" | "1i" | "2f" | "2i" | "3f" | "3i" | "4f" | "4i";

@@ -1,4 +1,4 @@
-import { TFragmentScript, TVertexScript } from "./rain-renderer";
+import { TFragmentScript, TVertexScript } from "./RainRenderer";
 
 /**
  * Interpolation function type.

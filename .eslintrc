@@ -19,11 +19,13 @@
   "rules": {
     "no-console": "warn",
     "no-extra-boolean-cast": "off",
+    "no-dupe-class-members": "off",
     "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/interface-name-prefix": ["error", "always"],
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
   },
   "env": {
     "es6": true,

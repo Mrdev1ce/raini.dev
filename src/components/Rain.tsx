@@ -1,54 +1,55 @@
 import styled from "@emotion/styled";
-import { getTheme, ThemeContext } from "../context/ThemeContext";
-import * as React from "react";
-import { ReactElement, useContext, useEffect } from "react";
-import RainRenderer from "./rain-renderer";
-import { createCanvas, createImageElements } from "./RainUtils";
-import Raindrops from "./raindrops";
+import { IThemeAware, ThemeContext } from "../context/ThemeContext";
+import React, { ReactElement, useContext, useEffect } from "react";
+import RainRenderer from "../core/rain/RainRenderer";
+import { createCanvas, createImageElements } from "../core/rain/RainUtils";
+import Raindrops from "../core/rain/Raindrops";
+import { getCurrentBrowser, TBrowser } from "../utils/getCurrentBrowser";
 
-const Header = styled.header({
+const Header = styled.header<IThemeAware>(({ theme }) => ({
   display: "flex",
-  height: "100vh",
+  minHeight: "100vh",
   width: "100vw",
-  backgroundColor: getTheme("dark").DARKER,
+  position: "relative",
+  backgroundColor: theme.DARKER,
   justifyContent: "center",
   alignItems: "center",
+  color: theme.TEXT_MAIN,
+  textShadow: `3px 3px 2px ${theme.DARKER}`,
   "*": {
     zIndex: 2,
   },
   canvas: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
     zIndex: 1,
-    boxShadow: "0 3px 15px rgba(0,0,0,0.5)",
   },
-});
+}));
 
 const Canvas = styled.canvas({
   position: "absolute",
 });
 
-const Loader = styled.div({
-  background: `url(${require("../assets/img/loading.svg")}) no-repeat center top`,
-  backgroundSize: "cover",
-  height: "44px",
-  width: "44px",
-  zIndex: 1,
-});
-const Title = styled.h1(({ theme }: any) => ({
-  color: theme.TEXT_LIGHT,
-  fontSize: "10rem",
-  textShadow: `3px 3px 2px ${theme.TEXT_DARK}`,
-}));
-const IntroSection = styled.section({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "space-between",
-});
-
-export default function LandingPage(): ReactElement {
+export default function Rain({ children }: any): ReactElement {
   const [theme] = useContext(ThemeContext);
 
   useEffect(() => {
+    const currentBrowser = getCurrentBrowser(navigator);
+    const slowWebGlBrowsers: TBrowser[] = ["firefox", "safari"];
+
+    if (slowWebGlBrowsers.includes(currentBrowser)) {
+      const header = document.querySelector("header");
+
+      if (!header) {
+        return;
+      }
+
+      header.style.background = `url(${require("../assets/img/texture-rain-bg.png")}) no-repeat center/cover`;
+      return;
+    }
+
     createImageElements([
       require("../assets/img/drop-alpha.png"),
       require("../assets/img/drop-color.png"),
@@ -101,12 +102,9 @@ export default function LandingPage(): ReactElement {
   }, []);
 
   return (
-    <Header>
+    <Header theme={theme}>
       <Canvas id="container" />
-      <IntroSection>
-        <Title theme={theme}>raini</Title>
-        <Loader />
-      </IntroSection>
+      {children}
     </Header>
   );
 }

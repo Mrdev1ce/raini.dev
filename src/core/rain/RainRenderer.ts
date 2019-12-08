@@ -3,8 +3,8 @@ import GL from "./gl";
 export type TVertexScript = string;
 export type TFragmentScript = string;
 
-const vertShader: TVertexScript = require("../assets/shaders/simple.vert");
-const fragShader: TFragmentScript = require("../assets/shaders/water.frag");
+const vertShader: TVertexScript = require("../../assets/shaders/simple.vert");
+const fragShader: TFragmentScript = require("../../assets/shaders/water.frag");
 
 export interface IRainRendererOptions {
   minRefraction: number;
