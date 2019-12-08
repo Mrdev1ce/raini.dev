@@ -51,7 +51,7 @@
   "scripts": {
     "parcel:cache:clear": "shx rm -rf .cache/ dist/",
     "start": "parcel src/index.html",
-    "build": "parcel build --public-url ./dist/ src/index.html",
+    "build": "parcel build src/index.html",
     "test": "jest",
     "format": "prettier src/**/*.{ts,tsx} *.md --write",
     "lint:prettier": "prettier src/**/*.{js,html,ts,tsx,json} *.md --list-different",
