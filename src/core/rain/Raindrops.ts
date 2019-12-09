@@ -1,9 +1,5 @@
 import { chance, createCanvas, random, times } from "./RainUtils";
 
-// @todo Refactor
-// @todo Extract types and interfaces
-// @todo Project setup, tests, etc.
-
 const DROP_SIZE = 64;
 
 export interface IDrop {
