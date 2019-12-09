@@ -7,10 +7,23 @@ import "highlight.js/styles/darcula.css";
 import { getGlobalStyles } from "./core/getGlobalStyles";
 import FullPageLoader from "./components/FullPageLoader";
 import { getCurrentBrowser, TBrowser } from "./utils/getCurrentBrowser";
+import styled from "@emotion/styled";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const DocsPage = lazy(() => import("./pages/DocsPage"));
 const Footer = lazy(() => import("./components/Footer"));
+
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Main = styled.main`
+  flex-grow: 1;
+`;
 
 export const App = (): ReactElement => {
   const themeHook = useState(getTheme("dark"));
@@ -31,11 +44,15 @@ export const App = (): ReactElement => {
       <Suspense fallback={<FullPageLoader />}>
         <ThemeProvider value={themeHook}>
           <Global styles={getGlobalStyles(theme)} />
-          <Router>
-            <LandingPage showRain={showRain} path="/" />
-            <DocsPage showRain={showRain} path="/docs/:repository" />
-          </Router>
-          <Footer />
+          <PageWrapper>
+            <Main>
+              <Router>
+                <LandingPage showRain={showRain} path="/" />
+                <DocsPage showRain={showRain} path="/docs/:repository" />
+              </Router>
+            </Main>
+            <Footer />
+          </PageWrapper>
         </ThemeProvider>
       </Suspense>
     </StrictMode>
