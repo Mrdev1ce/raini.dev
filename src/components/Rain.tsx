@@ -1,55 +1,15 @@
-import styled from "@emotion/styled";
-import { IThemeAware, ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 import React, { ReactElement, useContext, useEffect } from "react";
 import RainRenderer from "../core/rain/RainRenderer";
 import { createCanvas, createImageElements } from "../core/rain/RainUtils";
 import Raindrops from "../core/rain/Raindrops";
-import { getCurrentBrowser, TBrowser } from "../utils/getCurrentBrowser";
-
-const Header = styled.header<IThemeAware>(({ theme }) => ({
-  display: "flex",
-  minHeight: "100vh",
-  width: "100vw",
-  position: "relative",
-  backgroundColor: theme.DARKER,
-  justifyContent: "center",
-  alignItems: "center",
-  color: theme.TEXT_MAIN,
-  textShadow: `3px 3px 2px ${theme.DARKER}`,
-  "*": {
-    zIndex: 2,
-  },
-  canvas: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 1,
-  },
-}));
-
-const Canvas = styled.canvas({
-  position: "absolute",
-});
+import { Header } from "./Header";
+import { Canvas } from "./Canvas";
 
 export default function Rain({ children }: any): ReactElement {
   const [theme] = useContext(ThemeContext);
 
   useEffect(() => {
-    const currentBrowser = getCurrentBrowser(navigator);
-    const slowWebGlBrowsers: TBrowser[] = ["firefox", "safari"];
-
-    if (slowWebGlBrowsers.includes(currentBrowser)) {
-      const header = document.querySelector("header");
-
-      if (!header) {
-        return;
-      }
-
-      header.style.background = `url(${require("../assets/img/texture-rain-bg.png")}) no-repeat center/cover`;
-      return;
-    }
-
     createImageElements([
       require("../assets/img/drop-alpha.png"),
       require("../assets/img/drop-color.png"),

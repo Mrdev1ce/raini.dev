@@ -3,8 +3,11 @@ import styled from "@emotion/styled";
 import { IThemeAware, ThemeContext } from "../context/ThemeContext";
 import { highlightBlock, initHighlighting, registerLanguage } from "highlight.js";
 import FullPageLoader from "../components/FullPageLoader";
+import { IPathAware } from "../core/IPathAware";
+import { IShowRainAware } from "../core/IShowRainAware";
 
 const Rain = lazy(() => import("../components/Rain"));
+const NoRain = lazy(() => import("../components/NoRain"));
 
 const ReadmeWrapper = styled.section<IThemeAware>(({ theme }) => ({
   width: "900px",
@@ -44,10 +47,14 @@ const ReadmeWrapper = styled.section<IThemeAware>(({ theme }) => ({
   },
 }));
 
-const DocsComponent = (props: any) => {
+interface IRepositoryAware {
+  repository: string;
+}
+
+const DocsComponent = ({ repository }: IRepositoryAware) => {
   const [theme] = useContext(ThemeContext);
   const [readme, setReadme] = useState("");
-  const path = `https://api.github.com/repos/Raini-js/${props.repository}/readme`;
+  const path = `https://api.github.com/repos/Raini-js/${repository}/readme`;
 
   useEffect(() => {
     if (!readme) {
@@ -92,11 +99,16 @@ const Overlay = styled.div({
   bottom: 0,
 });
 
-export default function DocsPage({ repository }: any) {
+export default function DocsPage({
+  repository,
+  showRain,
+}: IRepositoryAware & IShowRainAware & IPathAware) {
+  const Wrapper = showRain ? Rain : NoRain;
+
   return (
-    <Rain>
+    <Wrapper>
       <Overlay />
       <DocsComponent repository={repository} />
-    </Rain>
+    </Wrapper>
   );
 }
