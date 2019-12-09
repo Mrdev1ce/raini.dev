@@ -7,6 +7,7 @@ import FullPageLoader from "../components/FullPageLoader";
 const Rain = lazy(() => import("../components/Rain"));
 
 const ReadmeWrapper = styled.section<IThemeAware>(({ theme }) => ({
+  width: "900px",
   maxWidth: "80%",
   zIndex: 2,
   color: theme.TEXT_MAIN,
