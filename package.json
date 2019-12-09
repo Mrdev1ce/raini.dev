@@ -1,7 +1,7 @@
 {
-  "name": "raini.dev",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@raini/raini.dev",
+  "version": "0.0.0",
+  "description": "Raini.dev website",
   "main": "index.js",
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.23",
@@ -59,8 +59,22 @@
     "lint:tsc": "tsc --noEmit",
     "lint": "npm run lint:tsc && npm run lint:prettier && npm run lint:eslint"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "raini",
+    "website"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Raini-js/raini.dev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Raini-js/raini.dev/issues"
+  },
+  "author": {
+    "email": "priestine1.dev@gmail.com",
+    "name": "Sergei Orlov",
+    "url": "https://raini.dev"
+  },
   "license": "MIT",
   "husky": {
     "hooks": {
