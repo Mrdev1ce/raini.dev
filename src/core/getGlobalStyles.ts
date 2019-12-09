@@ -24,4 +24,17 @@ export const getGlobalStyles = (theme: Theme) => css`
     text-align: center;
     text-shadow: 3px 3px 2px ${theme.DARKER};
   }
+
+  a,
+  a:hover,
+  a:visited,
+  a:active {
+    font-weight: bold;
+    text-decoration: none;
+    color: ${theme.TEXT_MAIN};
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 `;

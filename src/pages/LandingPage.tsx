@@ -1,27 +1,20 @@
-import styled from "@emotion/styled";
 import React, { lazy } from "react";
 import { IPathAware } from "../core/IPathAware";
+import { IShowRainAware } from "../core/IShowRainAware";
+import { IntroSection } from "../components/IntroSection";
+import { Title } from "../components/Title";
 
 const Rain = lazy(() => import("../components/Rain"));
+const NoRain = lazy(() => import("../components/NoRain"));
 
-export const Title = styled.h1({
-  fontSize: "10rem",
-  lineHeight: 0,
-});
+export default function LandingPage({ showRain }: IPathAware & IShowRainAware) {
+  const Wrapper = showRain ? Rain : NoRain;
 
-export const IntroSection = styled.section({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "space-between",
-});
-
-export default function LandingPage(_: IPathAware) {
   return (
-    <Rain>
+    <Wrapper>
       <IntroSection>
         <Title>raini</Title>
       </IntroSection>
-    </Rain>
+    </Wrapper>
   );
 }

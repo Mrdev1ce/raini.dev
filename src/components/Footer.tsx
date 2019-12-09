@@ -6,7 +6,6 @@ const StyledFooter = styled.footer<IThemeAware>(({ theme }) => ({
   width: "100%",
   maxWidth: "100vw",
   zIndex: 2,
-  position: "absolute",
   padding: "20px 0",
   textAlign: "center",
   backgroundColor: theme.DARK,
