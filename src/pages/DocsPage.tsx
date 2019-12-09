@@ -48,7 +48,7 @@ const ReadmeWrapper = styled.section<IThemeAware>(({ theme }) => ({
 }));
 
 interface IRepositoryAware {
-  repository: string;
+  repository?: string;
 }
 
 const DocsComponent = ({ repository }: IRepositoryAware) => {
