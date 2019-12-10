@@ -1,10 +1,10 @@
 import React, { PropsWithChildren } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
-import { Header } from "./Header";
+import { MainWrapper } from "./MainWrapper";
 import styled from "@emotion/styled";
 
-const NoRainHeader = styled(Header)`
+const NoRainHeader = styled(MainWrapper)`
   background: url(${require("../assets/img/texture-rain-bg.png")}) no-repeat center/cover;
 `;
 

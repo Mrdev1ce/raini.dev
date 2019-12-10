@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { IThemeAware } from "../context/ThemeContext";
 
-export const Header = styled.header<IThemeAware>`
+export const MainWrapper = styled.div<IThemeAware>`
   display: flex;
   justify-content: center;
   align-items: center;

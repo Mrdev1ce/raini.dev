@@ -3,7 +3,7 @@ import React, { PropsWithChildren, ReactElement, useContext, useEffect } from "r
 import RainRenderer from "../core/rain/RainRenderer";
 import { createCanvas, createImageElements } from "../core/rain/RainUtils";
 import Raindrops from "../core/rain/Raindrops";
-import { Header } from "./Header";
+import { MainWrapper } from "./MainWrapper";
 import { Canvas } from "./Canvas";
 
 export default function Rain({ children }: PropsWithChildren<{}>): ReactElement {
@@ -62,9 +62,9 @@ export default function Rain({ children }: PropsWithChildren<{}>): ReactElement 
   }, []);
 
   return (
-    <Header theme={theme}>
+    <MainWrapper theme={theme}>
       <Canvas id="container" />
       {children}
-    </Header>
+    </MainWrapper>
   );
 }
