@@ -9,43 +9,50 @@ import { IShowRainAware } from "../core/IShowRainAware";
 const Rain = lazy(() => import("../components/Rain"));
 const NoRain = lazy(() => import("../components/NoRain"));
 
-const ReadmeWrapper = styled.section<IThemeAware>(({ theme }) => ({
-  width: "900px",
-  maxWidth: "80%",
-  zIndex: 2,
-  color: theme.TEXT_MAIN,
-  h1: {
-    fontSize: "3rem",
-    lineHeight: "0",
-    paddingBottom: "20px",
-    textAlign: "center",
-  },
-  article: {
-    borderRadius: "5px",
-    margin: "20px 0",
-    width: "100%",
-    background: "rgba(0, 0, 0, 0.3)",
-    boxShadow: "0 0 15px rgba(0, 0, 0, 0.3)",
-    padding: "20px",
-  },
-  "#readme": {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  "p > a > img": {
-    marginRight: "5px",
-  },
-  ".highlight": {
-    borderRadius: "5px",
-    boxShadow: "inset 0 0 15px rgba(0,0,0,0.1)",
-    padding: "15px",
-  },
-  ".octicon": {
-    display: "none",
-  },
-}));
+const DocsWrapper = styled.section<IThemeAware>`
+  width: 80%;
+  max-width: 900px;
+  z-index: 2;
+  color: ${({ theme }) => theme.TEXT_MAIN};
+
+  h1 {
+    font-size: 3rem;
+    line-height: 0;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  article {
+    border-radius: 5px;
+    margin: 20px 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+  }
+
+  #readme {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & p > a > img {
+    margin-right: 5px;
+  }
+
+  & .highlight {
+    border-radius: 5px;
+    text-shadow: none;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+  }
+
+  & .octicon {
+    display: none;
+  }
+`;
 
 interface IRepositoryAware {
   repository?: string;
@@ -85,19 +92,17 @@ const DocsComponent = ({ repository }: IRepositoryAware) => {
 
   const __html = readme;
 
-  return <ReadmeWrapper theme={theme} dangerouslySetInnerHTML={{ __html }} />;
+  return <DocsWrapper theme={theme} dangerouslySetInnerHTML={{ __html }} />;
 };
 
-const Overlay = styled.div({
-  width: "100%",
-  height: "100%",
-  backgroundColor: "rgba(0, 0, 0, 0.4)",
-  position: "absolute",
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-});
+const Overlay = styled.div`
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`;
 
 export default function DocsPage({
   repository,

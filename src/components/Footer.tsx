@@ -2,18 +2,19 @@ import styled from "@emotion/styled";
 import { IThemeAware, ThemeContext } from "../context/ThemeContext";
 import React, { ReactElement, useContext } from "react";
 
-const StyledFooter = styled.footer<IThemeAware>(({ theme }) => ({
-  width: "100%",
-  maxWidth: "100vw",
-  zIndex: 2,
-  padding: "20px 0",
-  textAlign: "center",
-  backgroundColor: theme.DARK,
-  color: theme.TEXT_MAIN,
-  "& > a": {
-    color: theme.TEXT_MAIN,
-  },
-}));
+const StyledFooter = styled.footer<IThemeAware>`
+  width: 100%;
+  max-width: 100vw;
+  z-index: 2;
+  padding: 20px 0;
+  text-align: center;
+  background-color: ${({ theme }) => theme.DARK};
+  color: ${({ theme }) => theme.TEXT_MAIN};
+
+  & > a {
+    color: ${({ theme }) => theme.TEXT_MAIN};
+  }
+`;
 
 export default function Footer(): ReactElement {
   const [theme] = useContext(ThemeContext);
