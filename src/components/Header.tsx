@@ -8,7 +8,7 @@ export const Header = styled.header<IThemeAware>(({ theme }) => ({
   backgroundColor: theme.DARKER,
   justifyContent: "center",
   flexGrow: 1,
-  height: "100vh",
+  minHeight: "100vh",
   alignItems: "center",
   color: theme.TEXT_MAIN,
   textShadow: `3px 3px 2px ${theme.DARKER}`,
