@@ -8,6 +8,7 @@ import { getGlobalStyles } from "./core/getGlobalStyles";
 import FullPageLoader from "./components/FullPageLoader";
 import { getCurrentBrowser, TBrowser } from "./utils/getCurrentBrowser";
 import styled from "@emotion/styled";
+import Header from "./components/Header";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const DocsPage = lazy(() => import("./pages/DocsPage"));
@@ -45,6 +46,7 @@ export const App = (): ReactElement => {
         <ThemeProvider value={themeHook}>
           <Global styles={getGlobalStyles(theme)} />
           <PageWrapper>
+            <Header />
             <Main>
               <Router>
                 <LandingPage showRain={showRain} path="/" />
