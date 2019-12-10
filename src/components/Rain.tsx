@@ -1,12 +1,12 @@
 import { ThemeContext } from "../context/ThemeContext";
-import React, { ReactElement, useContext, useEffect } from "react";
+import React, { PropsWithChildren, ReactElement, useContext, useEffect } from "react";
 import RainRenderer from "../core/rain/RainRenderer";
 import { createCanvas, createImageElements } from "../core/rain/RainUtils";
 import Raindrops from "../core/rain/Raindrops";
-import { Header } from "./Header";
+import { MainWrapper } from "./MainWrapper";
 import { Canvas } from "./Canvas";
 
-export default function Rain({ children }: any): ReactElement {
+export default function Rain({ children }: PropsWithChildren<{}>): ReactElement {
   const [theme] = useContext(ThemeContext);
 
   useEffect(() => {
@@ -62,9 +62,9 @@ export default function Rain({ children }: any): ReactElement {
   }, []);
 
   return (
-    <Header theme={theme}>
+    <MainWrapper theme={theme}>
       <Canvas id="container" />
       {children}
-    </Header>
+    </MainWrapper>
   );
 }
