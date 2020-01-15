@@ -21,13 +21,13 @@ export const isOpera = (x: Navigator) => /OPR/.test(x.userAgent);
 export const isSafari = (x: Navigator) => /Safari/.test(x.userAgent) && !/Chrome/.test(x.userAgent);
 
 export const getCurrentBrowser = (navigator: Navigator): TBrowser =>
-  Switch<Navigator, TBrowser>(navigator)
-    .case(isAndroid, "android")
-    .case(isEdge, "edge")
-    .case(isChrome, "chrome")
-    .case(isChromeIos, "chrome-ios")
-    .case(isIe, "ie")
-    .case(isIos, "ios")
-    .case(isOpera, "opera")
-    .case(isSafari, "safari")
-    .default("firefox");
+  Switch(navigator)
+    .case(isAndroid, "android" as const)
+    .case(isEdge, "edge" as const)
+    .case(isChrome, "chrome" as const)
+    .case(isChromeIos, "chrome-ios" as const)
+    .case(isIe, "ie" as const)
+    .case(isIos, "ios" as const)
+    .case(isOpera, "opera" as const)
+    .case(isSafari, "safari" as const)
+    .default("firefox" as const);

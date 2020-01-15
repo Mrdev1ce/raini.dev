@@ -7,7 +7,7 @@
     "@emotion/babel-preset-css-prop": "^10.0.23",
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
-    "@raini/switch": "^1.0.1",
+    "@raini/switch": "^1.1.2",
     "@reach/router": "^1.2.1",
     "highlight.js": "^9.16.2",
     "markdown-it": "^10.0.0",
