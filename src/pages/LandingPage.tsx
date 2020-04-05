@@ -16,11 +16,25 @@ const Title = styled.h1`
   line-height: 0;
 `;
 
+const DescriptionWrapper = styled.div`
+  width: 50%;
+  max-width: 800px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 0;
+  border-radius: 4px;
+`;
+
 export default function LandingPage(_: IPathAware) {
   return (
     <Rain>
       <IntroSection>
         <Title>raini</Title>
+        <DescriptionWrapper>
+          <h3>
+            A free open source platform for creating and sharing educational programs related to
+            software development and all the things around it.
+          </h3>
+        </DescriptionWrapper>
       </IntroSection>
     </Rain>
   );
