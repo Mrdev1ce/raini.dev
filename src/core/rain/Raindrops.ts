@@ -36,24 +36,24 @@ const Drop: IDrop = {
 
 export default class Raindrops {
   private readonly options = {
-    minR: 3,
-    maxR: 40,
+    minR: 10,
+    maxR: 20,
     maxDrops: 900,
     rainChance: 0.3,
     rainLimit: 3,
     dropletsRate: 50,
-    dropletsSize: [2, 4],
-    dropletsCleaningRadiusMultiplier: 0.5,
+    dropletsSize: [1, 2],
+    dropletsCleaningRadiusMultiplier: 1,
     raining: true,
     globalTimeScale: 1,
-    trailRate: 1,
+    trailRate: 0.5,
     autoShrink: true,
     spawnArea: [-0.1, 0.95],
-    trailScaleRange: [0.2, 0.3],
+    trailScaleRange: [0.1, 0.3],
     collisionRadius: 0.7,
     collisionRadiusIncrease: 0.01,
-    dropFallMultiplier: 1,
-    collisionBoostMultiplier: 0.05,
+    dropFallMultiplier: 0.001,
+    collisionBoostMultiplier: 0.01,
     collisionBoost: 1,
   };
 

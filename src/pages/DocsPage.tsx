@@ -4,10 +4,8 @@ import { IThemeAware, ThemeContext } from "../context/ThemeContext";
 import { highlightBlock, initHighlighting, registerLanguage } from "highlight.js";
 import FullPageLoader from "../components/FullPageLoader";
 import { IPathAware } from "../core/IPathAware";
-import { IShowRainAware } from "../core/IShowRainAware";
 
 const Rain = lazy(() => import("../components/Rain"));
-const NoRain = lazy(() => import("../components/NoRain"));
 
 const DocsWrapper = styled.section<IThemeAware>`
   width: 80%;
@@ -104,16 +102,11 @@ const Overlay = styled.div`
   bottom: 0;
 `;
 
-export default function DocsPage({
-  repository,
-  showRain,
-}: IRepositoryAware & IShowRainAware & IPathAware) {
-  const Wrapper = showRain ? Rain : NoRain;
-
+export default function DocsPage({ repository }: IRepositoryAware & IPathAware) {
   return (
-    <Wrapper>
+    <Rain>
       <Overlay />
       <DocsComponent repository={repository} />
-    </Wrapper>
+    </Rain>
   );
 }

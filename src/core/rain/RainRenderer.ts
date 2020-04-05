@@ -33,8 +33,8 @@ export default class RainRenderer {
 
     this._options = {
       ...{
-        minRefraction: 256,
-        maxRefraction: 512,
+        minRefraction: 128,
+        maxRefraction: 256,
         brightness: 1,
         alphaMultiply: 10,
         alphaSubtract: 2.5,

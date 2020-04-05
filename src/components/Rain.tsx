@@ -30,8 +30,8 @@ export default function Rain({ children }: PropsWithChildren<{}>): ReactElement 
 
       const dpi = window.devicePixelRatio;
 
-      canvas.width = window.innerWidth * dpi;
-      canvas.height = window.innerHeight * dpi;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
       const raindrops = new Raindrops(canvas.width, canvas.height, dpi, dropAlpha, dropColor);
 

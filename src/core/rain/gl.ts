@@ -5,7 +5,7 @@ export type GLUniformType = "1f" | "1i" | "2f" | "2i" | "3f" | "3i" | "4f" | "4i
 
 export type CreateUniformRestParams = Array<GLfloat | GLint>;
 
-export enum WebGLVersion {
+export const enum WebGLVersion {
   webgl2 = "webgl2",
   webgl = "webgl",
   eWebgl = "experimental-webgl",

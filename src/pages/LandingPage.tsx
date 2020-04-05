@@ -1,10 +1,8 @@
+import styled from "@emotion/styled";
 import React, { lazy } from "react";
 import { IPathAware } from "../core/IPathAware";
-import { IShowRainAware } from "../core/IShowRainAware";
-import styled from "@emotion/styled";
 
 const Rain = lazy(() => import("../components/Rain"));
-const NoRain = lazy(() => import("../components/NoRain"));
 
 const IntroSection = styled.section`
   display: flex;
@@ -18,14 +16,12 @@ const Title = styled.h1`
   line-height: 0;
 `;
 
-export default function LandingPage({ showRain }: IPathAware & IShowRainAware) {
-  const Wrapper = showRain ? Rain : NoRain;
-
+export default function LandingPage(_: IPathAware) {
   return (
-    <Wrapper>
+    <Rain>
       <IntroSection>
         <Title>raini</Title>
       </IntroSection>
-    </Wrapper>
+    </Rain>
   );
 }
