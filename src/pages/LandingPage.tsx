@@ -22,6 +22,7 @@ const DescriptionWrapper = styled.div`
   background: rgba(0, 0, 0, 0.2);
   border: 0;
   border-radius: 4px;
+  padding: 5px 20px;
 `;
 
 export default function LandingPage(_: IPathAware) {
