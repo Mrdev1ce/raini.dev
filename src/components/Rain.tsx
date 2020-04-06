@@ -28,12 +28,10 @@ export default function Rain({ children }: PropsWithChildren<{}>): ReactElement 
 
       const canvas = document.querySelector("#container") as HTMLCanvasElement;
 
-      const dpi = window.devicePixelRatio;
-
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      const raindrops = new Raindrops(canvas.width, canvas.height, dpi, dropAlpha, dropColor);
+      const raindrops = new Raindrops(canvas.width, canvas.height, 1, dropAlpha, dropColor);
 
       const textureFg = createCanvas(textureFgSize.width, textureFgSize.height);
       const textureFgCtx = textureFg.getContext("2d");

@@ -37,7 +37,7 @@ const Drop: IDrop = {
 export default class Raindrops {
   private readonly options = {
     minR: 10,
-    maxR: 20,
+    maxR: 30,
     maxDrops: 900,
     rainChance: 0.3,
     rainLimit: 3,
