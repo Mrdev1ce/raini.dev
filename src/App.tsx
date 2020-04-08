@@ -1,50 +1,24 @@
-import { Global } from "@emotion/core";
-import styled from "@emotion/styled";
-import { Router } from "@reach/router";
-import "highlight.js/styles/darcula.css";
-import "normalize.css/normalize.css";
-import React, { lazy, ReactElement, StrictMode, Suspense, useState } from "react";
-import FullPageLoader from "./components/FullPageLoader";
-import { getTheme, ThemeContext } from "./context/ThemeContext";
-import { getGlobalStyles } from "./core/getGlobalStyles";
+import { Router } from "@reach/router"
+import React, { lazy, StrictMode, Suspense } from "react"
+import { GlobalStyles } from "./components/GlobalStyles"
+import { Navigation } from "./components/Navigation"
+import { Routes } from "./routes"
+import LoaderPage from "./pages/LoaderPage"
 
-const LandingPage = lazy(() => import("./pages/LandingPage"));
-const DocsPage = lazy(() => import("./pages/DocsPage"));
-const Footer = lazy(() => import("./components/Footer"));
+const LandingPage = lazy(() => import("./pages/LandingPage"))
+const DocsPage = lazy(() => import("./pages/DocsPage"))
 
-const PageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 100vh;
-`;
-
-const Main = styled.main`
-  flex-grow: 1;
-`;
-
-export const App = (): ReactElement => {
-  const themeHook = useState(getTheme("dark"));
-  const [theme] = themeHook;
-  const { Provider: ThemeProvider } = ThemeContext;
-
-  return (
+export const App = () => (
+  <Suspense fallback={<LoaderPage />}>
     <StrictMode>
-      <Suspense fallback={<FullPageLoader />}>
-        <ThemeProvider value={themeHook}>
-          <Global styles={getGlobalStyles(theme)} />
-          <PageWrapper>
-            <Main>
-              <Router>
-                <LandingPage path="/" />
-                <DocsPage path="/docs/:repository" />
-              </Router>
-            </Main>
-            <Footer />
-          </PageWrapper>
-        </ThemeProvider>
-      </Suspense>
+      <GlobalStyles />
+      <header>
+        <Navigation />
+      </header>
+      <Router>
+        <LandingPage path={Routes.HOME} />
+        <DocsPage path={Routes.DOCS} />
+      </Router>
     </StrictMode>
-  );
-};
+  </Suspense>
+)

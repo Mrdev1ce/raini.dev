@@ -1,7 +1,6 @@
-import React from "react";
-import { render } from "react-dom";
-import { App } from "./App";
+import "normalize.css/normalize.css"
+import React from "react"
+import { render } from "react-dom"
+import { App } from "./App"
 
-// Browser-only things
-
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById("root"))

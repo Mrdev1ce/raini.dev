@@ -25,7 +25,8 @@
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/interface-name-prefix": ["error", "always"],
     "@typescript-eslint/no-var-requires": "off",
-    "@typescript-eslint/explicit-function-return-type": "off"
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/member-delimiter-style": "off"
   },
   "env": {
     "es6": true,

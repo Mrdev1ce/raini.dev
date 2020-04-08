@@ -1,42 +1,40 @@
-import styled from "@emotion/styled";
-import React, { lazy } from "react";
-import { IPathAware } from "../core/IPathAware";
+import React from "react"
+import { Card } from "../components/Card"
+import { Docs } from "../components/Docs"
+import { Header } from "../components/Header"
+import { Main } from "../components/Main"
+import { IPathAware } from "../types"
 
-const Rain = lazy(() => import("../components/Rain"));
+const OpenEducationCard = () => (
+  <Card title="Open Education">
+    <strong>Raini</strong> is a free open source platform for creating and sharing educational
+    programs related to software development and all the things around it.
+  </Card>
+)
 
-const IntroSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-`;
+const MakeAnImpactCard = () => (
+  <Card title="Make an Impact">
+    We are an open source community and we really appreciate participation.{" "}
+    <strong>Welcome aboard!</strong>
+  </Card>
+)
 
-const Title = styled.h1`
-  font-size: 10rem;
-  line-height: 0;
-`;
-
-const DescriptionWrapper = styled.div`
-  width: 50%;
-  max-width: 800px;
-  background: rgba(0, 0, 0, 0.2);
-  border: 0;
-  border-radius: 4px;
-  padding: 5px 20px;
-`;
+const FindYourPassionCard = () => (
+  <Card title="Find Your Passion">
+    Register for upcoming programs around the globe or study at your own pace with the records of
+    our previous workshops.
+  </Card>
+)
 
 export default function LandingPage(_: IPathAware) {
   return (
-    <Rain>
-      <IntroSection>
-        <Title>raini</Title>
-        <DescriptionWrapper>
-          <h3>
-            A free open source platform for creating and sharing educational programs related to
-            software development and all the things around it.
-          </h3>
-        </DescriptionWrapper>
-      </IntroSection>
-    </Rain>
-  );
+    <Main>
+      <Header>
+        <MakeAnImpactCard />
+        <OpenEducationCard />
+        <FindYourPassionCard />
+      </Header>
+      <Docs source="https://api.github.com/repos/raini-dev/raini/readme" />
+    </Main>
+  )
 }
