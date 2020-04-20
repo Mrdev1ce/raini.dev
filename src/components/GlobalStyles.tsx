@@ -3,7 +3,7 @@ import React from "react"
 
 const globalStyles = css`
   body {
-    font-family: "Avenir Next", "Caveat Brush", Avenir, "Helvetica Neue", "Lato", "Segoe UI",
+    font-family: "Montserrat", "Avenir Next", Avenir, "Helvetica Neue", "Lato", "Segoe UI",
       Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
